@@ -8,15 +8,15 @@ Password managers today require you to trust the provider with your data as well
 Currently, the extension is still in early development stages so is not yet publicly available on the Chrome Web Store, but if you want to try it out you can:
 1) Clone the repo
 2) Open Chrome
-3) At the top right, click ⋮ > More tools > Extensions
-3) Activate *Developer mode* at the top right of the page
+3) In the top right, click ⋮ > More tools > Extensions
+3) Activate *Developer mode* in the top right of the page
 4) Drag the AlgoPass folder into your extensions menu
 
 ## Setup
 **Node** - To be able to use AlgoPass you can either have an Algorand Node installed locally on your machine or you can use the PureStake API. 
 
 Local Installation:
-- Follow the steps outlined on [Algorand's developer website](https://developer.algorand.org/docs/run-a-node/setup/install/) (for Mac, Debian, RPM, and other Linux distros) 
+- Follow the steps outlined on [Algorand's developer website](https://developer.algorand.org/docs/run-a-node/setup/install/) (for Mac and Linux distros)
 
 Using the Purestake API:  
 1) Head over to the [Purestake's Developer Portal](https://developer.purestake.io/) and make an account
