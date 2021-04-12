@@ -1,0 +1,1 @@
+// Password center script
