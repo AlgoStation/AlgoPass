@@ -11,8 +11,7 @@ Currently, the extension is still in early development stages so is not yet publ
 3) Drag the AlgoPass folder into your extension menu
 
 ## Setup
-**Node** 
-To be able to use AlgoPass you can either have an Algorand Node installed locally on your machine or you can use the PureStake API. 
+**Node** - To be able to use AlgoPass you can either have an Algorand Node installed locally on your machine or you can use the PureStake API. 
 
 Local Installation:
 - Follow the steps outlined on [Algorand's developer website](https://developer.algorand.org/docs/run-a-node/setup/install/) (for Mac, Debian, RPM, and other Linux distros) 
