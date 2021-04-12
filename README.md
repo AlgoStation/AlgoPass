@@ -26,5 +26,5 @@ Using the Purestake API:
 **Account** - when you install the extension, you can either choose to import a mnemonic passphrase from another AlgoPass installation or create a new one (recommended).
 
 ## Contact
-Feel free to leave a comment or contact us at info.algopass@gmail.com for any issues or suggestions!
-Buy us a coffee: PDRLIAE4KWTDJVCUEJC5WGBPXJ5RU4EM66YAI2OWLJCVYYA2TQ4ELU3IWQ
+Feel free to leave a comment or contact us at info.algopass@gmail.com for any issues or suggestions!  
+Buy us a coffee: `PDRLIAE4KWTDJVCUEJC5WGBPXJ5RU4EM66YAI2OWLJCVYYA2TQ4ELU3IWQ` ☕
