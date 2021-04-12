@@ -1,14 +1,23 @@
 # AlgoPass Password Manager
 AlgoPass is an open source chrome extension that leverages the [Algorand](https://algorand.foundation/) blockchain to securely store your encrypted passwords in the transaction note field.
 
-## Why is AlgoPass better?
-Password managers today require you to trust the provider with your data and trust the security of their servers. Having sensitive information in the hands of others requires a lot of trust as security breaches can be out of your control and data leaks are often covered up and you may never know that your information was leaked. Storing data on the Algorand blockchain, however, solves these issues: its security and decentralized nature mean that you don't have to trust anyone but yourself when it comes to protecting your passwords.
+## Why AlgoPass?
+Password managers today require you to trust the provider with your data as well as trusting the security of their servers. Having sensitive information in the hands of others is incredibly risky and centralised systems frequently suffer from security breaches that can be out of your control and you might never even know it happened. Storing data on the Algorand blockchain, however, solves these issues: its security and decentralized nature mean that you don't have to trust anyone but yourself when it comes to protecting your passwords. AlgoPass is the worlds first blockchain based password manager we're excited to hear your feedback!
 
 ## Setup
-**Node** - you will need to link your extension with a node (either using the [Purestake API](https://developer.purestake.io/) or using your own local node).  
+**Node** 
+To be able to use AlgoPass you must have an Algorand Node installed locally on your PC or use the PureStake API. 
 
-**Account** - when you install the extension, you can either choose to import a mnemonic passphrase from another AlgoPass installation or create a new one.
+Local Installation(Free):
+    - Follow the steps outlined on Algorand's official website(Mac, Debian, RPM, Other Linux Distros): https://developer.algorand.org/docs/run-a-node/setup/install/
+
+Using the Purestake API(Free):
+    1) To use the PureStake API head over to https://developer.purestake.io/ and make an account.
+    2) Once you have made an account login and you will find your API  key at the top of your dashboard. (**KEEP IT SECRET**)
+
+
+**Account** - when you install the extension, you can either choose to import a mnemonic passphrase from another AlgoPass installation or create a new one(recommended).
 
 ## Contact
-Feel free to contact us at info.algopass@gmail.com for any issues or suggestions!
+Feel free to leave a comment or contact us at info.algopass@gmail.com for any issues or suggestions!
 Buy us a coffee: PDRLIAE4KWTDJVCUEJC5WGBPXJ5RU4EM66YAI2OWLJCVYYA2TQ4ELU3IWQ
