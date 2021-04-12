@@ -7,8 +7,10 @@ Password managers today require you to trust the provider with your data as well
 ## Installation
 Currently, the extension is still in early development stages so is not yet publicly available on the Chrome Web Store, but if you want to try it out you can:
 1) Clone the repo
-2) Activate *Developer mode* in the top right of the [Chrome extensions menu](chrome://extensions/)
-3) Drag the AlgoPass folder into your extension menu
+2) Open Chrome
+3) At the top right, click ⋮ > More tools > Extensions
+3) Activate *Developer mode* at the top right of the page
+4) Drag the AlgoPass folder into your extensions menu
 
 ## Setup
 **Node** - To be able to use AlgoPass you can either have an Algorand Node installed locally on your machine or you can use the PureStake API. 
