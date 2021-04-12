@@ -8,15 +8,15 @@ Password managers today require you to trust the provider with your data as well
 **Node** 
 To be able to use AlgoPass you must have an Algorand Node installed locally on your PC or use the PureStake API. 
 
-Local Installation(Free):
-    - Follow the steps outlined on Algorand's official website(Mac, Debian, RPM, Other Linux Distros): https://developer.algorand.org/docs/run-a-node/setup/install/
+Local Installation:
+    - Follow the steps outlined on [Algorand's developer website](https://developer.algorand.org/docs/run-a-node/setup/install/) (for Mac, Debian, RPM, and other Linux distros): 
 
-Using the Purestake API(Free):
-    1) To use the PureStake API head over to https://developer.purestake.io/ and make an account.
-    2) Once you have made an account login and you will find your API  key at the top of your dashboard. (**KEEP IT SECRET**)
+Using the Purestake API:  
+    1) Head over to the [Purestake's Developer Portal](https://developer.purestake.io/) and make an account
+    2) Once you login you will find your API key and server (**KEEP IT SECRET**)
 
 
-**Account** - when you install the extension, you can either choose to import a mnemonic passphrase from another AlgoPass installation or create a new one(recommended).
+**Account** - when you install the extension, you can either choose to import a mnemonic passphrase from another AlgoPass installation or create a new one (recommended).
 
 ## Contact
 Feel free to leave a comment or contact us at info.algopass@gmail.com for any issues or suggestions!
