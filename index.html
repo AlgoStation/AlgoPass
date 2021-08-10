@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+  ad8888888888ba
+ dP'         `"8b,
+ 8  ,aaa,       "Y888a     ,aaaa,     ,aaa,  ,aa,
+ 8  8' `8           "88baadP""""YbaaadP"""YbdP""Yb
+ 8  8   8              """        """      ""    8b
+ 8  8, ,8         ,aaaaaaaaaaaaaaaaaaaaaaaaddddd88P
+ 8  `"""'       ,d8""
+ Yb,         ,ad8"        by pdemicheli
+  "Y8888888888P"
+-->
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="webfonts/fa_icons.css">
+	<link rel="stylesheet" href="font/stylesheet.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+	<!-- TOP BAR -->
+
+	<div id="top">
+		<div id="new-entry-div">
+			<button id="new-entry-button">
+				<div id="icon-div">
+					<i class="far fa-plus-square"></i>
+				</div>
+				<div id="text-div">
+					New Entry
+				</div>
+			</button>
+		</div>
+		<div id="balance-div">
+			<svg id="algo-icon" viewBox="0 0 650 650"><g><polygon points="444.18 444.32 406.81 444.32 382.54 354.04 330.36 444.33 288.64 444.33 369.29 304.57 356.31 256.05 247.56 444.36 205.82 444.36 343.64 205.64 380.18 205.64 396.18 264.95 433.88 264.95 408.14 309.71 444.18 444.32"/></g></svg>
+			<span id="algo-balance">0.000</span>
+		</div>
+		<div id="settings-icon-div">
+			<i id="settings-icon-btn" class="fas fa-cog top-icons"></i>
+		</div>
+		<div id="info-icon-div">
+			<i id="info-icon-btn" class="far fa-question-circle top-icons"></i>
+		</div>
+	</div>
+
+	<!-- MAIN BODY -->
+
+	<div id="main">
+		<div id="card-holder">
+			<span class="loading-text">Loading entries...</span>
+		</div>
+	</div>
+
+	<!-- MODALS -->
+
+	<div id="mne-modal-div" class="modal-div center-modal-div">
+		<div id="mne-modal" class="modal center-modal">
+			<h3>CREATE A MASTER PASSWORD</h3>
+
+			<p>Please create a master password to keep your passwords safe</p>
+			<input id="enter-psw" type="password" placeholder="Enter Password">
+			<input id="confirm-psw" type="password" placeholder="Confirm Password">
+			<span id="mne-err-text" class="err-text">Passwords must be filled in and the same</span>
+			<button id="submit-psw-btn" class="modal-func-btn">Set Password</button>
+
+			<div id="rec-acc-div">
+				<p>Recovering an existing AlgoPass account?</p>
+				<input id="rec-acc" type="text" placeholder="Paste Mnemonic Passphrase (too)">
+				<span id="rec-err-text" class="err-text">Invalid mnemonic</span>
+			</div>
+		</div>
+	</div>
+
+	<div id="mp-modal-div" class="modal-div center-modal-div">
+		<div id="mp-modal" class="modal center-modal">
+			<h3>ENTER MASTER PASSWORD</h3>
+
+			<p>Please enter your master password</p>
+			<input id="login-psw" type="password" placeholder="Enter Password">
+			<span id="mp-err-text" class="err-text">Incorrect master password</span>
+			<button id="submit-mp-btn" class="modal-func-btn">Unlock</button>
+			<span id="forgot-psw">Forgot password? Click to remove master password and enter mnemonic instead</span>
+		</div>
+	</div>
+
+	<div id="new-entry-modal-div" class="modal-div">
+		<div id="new-entry-modal" class="modal">
+			<h3>ADD A NEW ENTRY</h3>
+
+			<div id="site" class="input-groups">
+				<label><b>Website</b></label>
+				<input id="site-inp" type="text" placeholder='e.g. "twitter.com"' required>
+			</div>
+
+			<div id="uname" class="input-groups">
+				<label><b>Login</b></label>
+				<input id="uname-inp" type="text" placeholder='e.g. "AlanTuring"' required>
+			</div>
+
+			<div id="psw" class="input-groups">
+				<label><b>Password</b></label>
+				<input id="psw-inp" type="password" placeholder='e.g. "•••••••••••••"' required>
+			</div>
+			
+			<button id="save-btn" type="submit" class="modal-func-btn">Save entry</button>
+			<span id="empty-err" class="err-text">Fields cannot be empty and<br>your account must be funded</span>
+			<label id="txn-status">Transaction successful!</label>
+
+			<button id="new-entry-close-btn" class="modal-close-btn">Close</button>
+		</div>
+	</div>
+
+	<div id="info-modal-div"  class="modal-div">
+		<div id="info-modal" class="modal">
+			<div>
+			<h3>Why is it special?</h3>
+			<p>When you use a traditional password manager, you <em>need</em> to trust that the service provider has secure servers and that they have no intention of selling your data.</p>
+			<p>Using the Algorand blockchain as a password manager <em>completely removes</em> this requirement of trust: the only person you need to trust is yourself. Its superior decentralized nature also ensures there is no single point of failure for malicious attackers to target.</p>
+			</div>
+			<div>
+			<h3>How does it work?</h3>
+			<p>Everything happens in your browser and on the Algorand blockchain. When you first install the AlgoPass extension, an Algorand account is generated - the secret key for this account is encrypted using your master password and stored in your browser.</p>
+			<p>The secret key serves two purposes:</p>
+			<ul>
+				<li>Encrypting the note field of your transactions (which contains your passwords to be saved)</li>
+				<li>Signing these transactions</li>
+			</ul>
+			<p>Essentially, this means that everything is dependent on your mnemonic passphrase. If you lose your computer, you can still access all of your passwords by installing the AlgoPass extension elsewhere and <em>signing in</em> using the same mnemonic passphrase.</p>
+			</div>
+			<div>
+			<h3>Why do I have to pay?</h3>
+			<p>All of the benefits of using the Algorand blockchain as a password manager come with a tiny fee of 1 milliAlgo per transaction. Since any new entry you create is a transaction on the Algorand blockchain, your Algos simply pay for your transactions.</p>
+			<p>Remember that although there is a small fee, not much money is needed at all: 1 Algo is enough to save 1000 passwords!</p>
+			</div>
+			<div>
+			<h3>What's to come?</h3>
+			<p>We are constantly working to roll out new features to make the AlgoPass experience a more pleasant and secure one. Below is a list of features you should be expecting in upcoming updates:</p>
+			<ul>
+				<li>Auto-saving and auto-filling of passwords when you create new accounts and log into previously visited sites</li>
+				<li>Editing and deleting entries</li>
+				<li>Fee delegation using Algorand smart contracts so that you don't have to fund the transaction fees yourself</li>
+			</ul>
+			<p>Feel free to leave your comments or suggestions in the <a id="feedback-a" href="#">Feedback Menu</a> or directly on <a href="https://github.com/AlgoStation/AlgoPass" target="_blank">our GitHub page</a>.</p>
+			<p>Love,<br>
+			The AlgoPass Guys</p>
+			</div>
+			<button id="info-close-btn" class="modal-close-btn">Close</button>
+		</div>
+	</div>
+
+	<div id="feedback-modal-div"  class="modal-div center-modal-div">
+		<div id="feedback-modal" class="modal center-modal">
+			<h3>LEAVE SOME FEEDBACK</h3>
+			<p>You can reach out to us by leaving your feedback in the box below and clicking the button to email it to us:</p>
+			<textarea id="feedback-box" type="text" rows="4"></textarea>
+			<button id="feedback-btn" class="modal-func-btn">Leave Feedback</button>
+			<button id="feedback-close-btn" class="modal-close-btn">Close</button>
+		</div>
+	</div>
+
+	<div id="settings-modal-div"  class="modal-div">
+		<div id="settings-modal" class="modal">
+			<h3>PUBLIC KEY</h3>
+			<canvas id="settings-canvas"></canvas>
+			<input id="pa-textbox" class="mne-txt" type="text" readonly>
+			<h3 id="sk-settings-text">SECRET KEY</h3>
+			<button id="exp-mne-btn" class="modal-func-btn">Export Mnemonic</button>
+			
+			<button id="settings-close-btn" class="modal-close-btn">Close</button>
+		</div>
+	</div>
+
+	<div id="expmne-modal-div"  class="modal-div center-modal-div">
+		<div id="expmne-modal" class="modal center-modal">
+			<h3>EXPORT MNEMONIC</h3>
+			<p>Your mnemonic passphrase is used to recover your passwords on another instance of AlgoPass</p>
+			<textarea id="mne-holder" rows="3" readonly></textarea>
+			<input id="copy-mne-holder" readonly/>
+			<button id="copy-mne-btn" class="modal-func-btn">Copy it<br><span style='font-size: 0.7em;'>(Not recommended)</span></button>
+			<button id="expmne-close-btn" class="modal-close-btn">Close</button>
+		</div>
+	</div>
+
+	<div id="card-modal-div"  class="modal-div">
+		<div id="card-modal" class="modal"></div>
+	</div>
+
+	<script src="libs/algosdk.min.js"></script>
+	<script src="libs/qrcode.js"></script>
+	<script src="libs/CryptoJS.js"></script>
+
+	<script src="algo.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>

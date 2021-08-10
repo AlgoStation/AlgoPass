@@ -1,0 +1,439 @@
+body {
+	width: 350px;
+	height: 560px;
+
+	padding: 0;
+	margin: 0;
+
+	font-size: 13px;
+	font-family: 'Euclid Circular B', sans-serif;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+input {
+	font-family: 'Euclid Circular B', sans-serif;
+}
+
+#top {
+	z-index: 1;
+
+	position: fixed;
+
+	width: 100%;
+	height: 40px;
+	top: 0;
+
+	padding: 0;
+	margin: 0;
+
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+
+	font-size: 16px;
+
+	background-color: white;
+
+	border: 1px solid lightgray;
+	border-radius: 0 0 8px 8px;
+
+	user-select: none;
+}
+
+button {
+	font-size: 16px;
+	font-family: 'Ubuntu', sans-serif;
+	border-radius: 12px;
+	border-width: 0;
+	background-color: transparent;
+}
+
+#new-entry-button {
+	padding: 5px 10px;
+}
+
+#new-entry-button {
+	display: flex;
+	justify-content: space-between;
+}
+
+#text-div {
+	padding-left: 5px;
+}
+
+#balance-div {
+	display: flex;
+	width: 80px;
+
+	justify-content: center;
+	align-items: center;
+}
+
+.top-icons {
+	font-size: 1.3em;
+}
+
+#info-modal h3 {
+	text-align: center;
+}
+
+#info-modal em {
+	font-style: normal;
+	font-weight: bold;
+	margin: 0;
+}
+
+#info-modal a {
+	margin: 0;
+	color: blue;
+}
+
+/*---------------------*/
+
+#main {
+	width: 100%;
+	height: 100%;
+}
+
+#card-holder {
+	margin-top: 40px;
+	padding: 5px;
+}
+
+.card {
+	background-color: white;
+
+	border: 2px solid black;
+	border-radius: 10px;
+
+	margin-bottom: 5px;
+	user-select: none;
+}
+
+.card-site-text {
+	padding: 6px 10px 6px 10px;
+	margin: 0;
+	text-transform: uppercase;
+	font-size: 14.5px;
+}
+
+.card-user-text {
+	padding: 0 10px 6px 10px;
+	margin: 0;
+	color: gray;
+	font-style: italic;
+}
+
+/*---------------------*/
+
+.modal-div {
+	z-index: 2;
+	position: absolute;
+	display: none;
+
+	width: 100%;
+	height: 100%;
+
+	background-color: rgba(0, 0, 0, 0.4);
+
+	animation: fade-in .25s ease-in-out;
+}
+
+#new-entry-modal {
+	position: absolute;
+
+	width: 80%;
+	height: 100%;
+	left: 0;
+
+	border-radius: 0 12px 12px 0;
+
+	animation: slide-right .25s ease-in-out;
+}
+
+#info-modal, #settings-modal {
+	position: absolute;
+
+	width: 80%;
+	height: 100%;
+	right: 0;
+
+	border-radius: 12px 0 0 12px;
+
+	animation: slide-left .25s ease-in-out;
+}
+
+#info-modal {
+	align-items: normal;
+	justify-content: normal;
+	overflow: auto;
+}
+
+ul {
+	padding-left: 10px;
+}
+
+#card-modal {
+	position: absolute;
+
+	width: 100%;
+	height: 60%;
+	bottom: 0;
+
+	border-radius: 12px 12px 0 0;
+
+	animation: slide-up .25s ease-in-out;
+}
+
+.modal-close-btn {
+	font-weight: bold;
+}
+
+.modal-close-btn:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+@keyframes slide-right {
+	from {transform: translateX(-80%);}
+	to {transform: translateX(0);}
+}
+
+@keyframes slide-left {
+	from {transform: translateX(100%);}
+	to {transform: translateX(0);}
+}
+
+@keyframes slide-up {
+	from {transform: translateY(100%);}
+	to {transform: translateY(0);}
+}
+
+@keyframes fade-in {
+	from {background-color: rgba(0, 0, 0, 0);}
+	to {background-color: rgba(0, 0, 0, 0.4);}
+}
+
+@keyframes pop-out {
+	from {transform: scale(0);}
+	to {transform: scale(1);}
+}
+
+/*---------------------*/
+
+.modal {
+	display: flex;
+	flex-direction: column;
+
+	background-color: white;
+
+	align-items: center;
+	justify-content: center;
+}
+
+#mne-modal {
+	height: 75%;
+}
+
+#rec-acc-div {
+	border-top: 1px solid gray;
+	margin-top: 25px;
+}
+
+#new-entry-modal * {
+	margin: 12px 0;
+}
+
+#copy-mne-holder {
+	display: none;
+}
+
+input[type=text], input[type=password] {
+	width: 255px;
+	padding: 12px 20px;
+	margin-top: 8px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+
+.input-groups {
+	padding-left: 12px;
+}
+
+#save-btn{
+	background-color: #04AA6D;
+}
+
+.modal-func-btn {
+	background-color: #0444aa;
+	color: white;
+	padding: 12px 5px;
+	border: none;
+	cursor: pointer;
+	width: 60%;
+	border-radius: 0;
+}
+
+.modal-func-btn:hover {
+	opacity: 80%;
+	padding: initial 5px;
+}
+
+#settings-modal * {
+	margin: 10px 15px;
+}
+
+#info-modal * {
+	margin: 10px 10px 0;
+}
+
+#info-modal button {
+	margin-bottom: 15px;
+}
+
+#card-btns {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+#edit-btn {
+	width: 30%;
+}
+
+#delete-btn {
+	background-color: #f44336;
+	width: 30%;
+}
+
+#card-modal * {
+	margin: 12px 0;
+}
+
+#psw-card:not(:hover) {
+	filter: blur(5px);
+}
+
+#txn-status {
+	color: red;
+	margin-top: 0;
+	visibility: hidden;
+}
+
+#no-card-div {
+	text-align: center;
+}
+
+.loading-text {
+	color: dimgray;
+	font-style: italic;
+	text-align: center;
+}
+
+#no-card-div {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#pa-textbox {
+	width: 85%;
+}
+
+/*---------------------*/
+
+.center-modal-div {
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+
+.center-modal {
+	width: 280px;
+	height: 280px;
+
+	animation: pop-out .5s;
+
+	justify-content: normal;
+	text-align: center;
+}
+
+.err-text {
+	font-size: 0.8em;
+	color: red;
+	margin: 5px;
+	visibility: hidden;
+	text-align: center;
+}
+
+#forgot-psw {
+	margin: 20px;
+	color: blue;
+	font-size: 0.7em;
+	cursor: pointer;
+}
+
+#forgot-psw:hover {
+	text-decoration: underline;
+}
+
+.italic-span {
+	font-style: italic;
+	padding: 0;
+	margin: 0;
+}
+
+button {
+	font-family: inherit;
+}
+
+#sk-settings-text {
+	text-align: center;
+	width: 80%;
+	border-top: 1px solid lightgray;
+	padding-top: 15px;
+}
+
+#settings-canvas {
+	margin: 0;
+}
+
+#feedback-modal {
+	justify-content: space-evenly;
+}
+
+#feedback-modal h3 {
+	margin-bottom: 0;
+}
+
+#feedback-btn {
+	margin: 10px;
+}
+
+#expmne-modal {
+	justify-content: space-evenly;
+}
+
+#expmne-modal h3 {
+	margin-bottom: 0;
+}
+
+textarea {
+	padding: 5px;
+	width: 255px;
+	resize: none;
+}
+
+#feedback-close-btn {
+	margin: 15px;
+}

@@ -1,0 +1,18 @@
+{
+	"name": "AlgoPass",
+	"description": "World's First Algorand-Powered Password Manager",
+	"version": "0.6",
+	"manifest_version": 3,
+	"icons": {
+		"48": "/ap.png"
+	},
+	"action": {
+		"default_popup": "index.html",
+		"default_icon": {
+			"48": "/ap.png"
+		}
+	},
+	"permissions": [
+		"storage"
+	]
+}
