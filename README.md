@@ -1,5 +1,3 @@
-![AlgoPass: A Password Manager Powered by the Algorand Blockchain](https://lh3.googleusercontent.com/B3cbWi90o4Yrw59Boh9Dfp-huhhFCnHVMzUDhCElvcbmOXA5FQOsXqqhb7-ZK5_57FdgL8_DX_r20g3JfshHCZAX=w640-h400-e365-rj-sc0x00ffffff)
-
 # AlgoPass Password Manager
 AlgoPass is an open source chrome extension that leverages the [Algorand](https://algorand.foundation/) blockchain to securely store your encrypted passwords in the transaction note field.
 
