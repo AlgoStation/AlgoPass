@@ -6,8 +6,10 @@ Password managers today require you to trust the provider with your data as well
 
 ## Installation
 Search "AlgoPass" on the [Chrome Web Store](https://chrome.google.com/webstore/detail/algopass/nhcnnicgglmlcepchiephndcklnmkkik) and hit "Add to Chrome" to get started.
-You will need to send your account some money (less than 1 Algo) to fund your transactions.
+*You will need to send your account some money (less than 1 Algo) to fund your transactions.*
 
 ## Contact
 Feel free to leave a comment or contact us at info.algopass@gmail.com for any issues or suggestions!  
 Buy us a coffee: `PDRLIAE4KWTDJVCUEJC5WGBPXJ5RU4EM66YAI2OWLJCVYYA2TQ4ELU3IWQ` ☕
+
+[AlgoPass Website](https://www.algopass.io) • [Chrome Web Store page](https://chrome.google.com/webstore/detail/algopass/nhcnnicgglmlcepchiephndcklnmkkik)
