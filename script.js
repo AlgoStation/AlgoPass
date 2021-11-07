@@ -1,3 +1,5 @@
+"use strict";
+
 const $id = (id) => { return document.getElementById(id); }
 
 const $class = (cl) => { return document.getElementsByClassName(cl); }
@@ -40,6 +42,8 @@ const hideFeedback = () => { $id("feedback-modal-div").style.display = "none"; }
 
 const showMpacc = () => { $id("mne-modal-div").style.display = "flex"; }
 
+const hideMpacc = () => { $id("mne-modal-div").style.display = "none"; }
+
 const showMpenter = () => {
 	$id("mp-modal-div").style.display = "flex";
 	$id("login-psw").focus();
@@ -56,31 +60,33 @@ const showMpErr = () => {
 
 const showEmptyErr = () => { $id("empty-err").style.visibility = "visible"; }
 
-const updateBal = async () => { $id("algo-balance").innerHTML = await algo.getShortBal(); }
-
 const getCardHTML = (id, site, uname) => {
 	return `
-<div class="card" id="card-${id}">
+<div class="content-card card" id="card-${id}">
 	<p class="card-site-text">${site}</p>
 	<p class="card-user-text">${uname}</p>
 </div>
 `
 }
 
-const getNoCardHTML = () => {
-	return `
-<div id="no-card-div">
-	<div">
-		No entries found<br><br>
-		Top up your wallet with 1 Algo<br>
-		and add your first entry to get started<br><br>
-		<span style="font-size: 0.9em;">Your public key:<br></span>
-		<canvas id="no-card-canvas"></canvas>
-		<span style="font-size: 0.65em">${algo.getAddr()}</span>
-	</div>
-</div>
-`
+const getOptCardHTML = async () => {
+	let url = `https://docs.google.com/forms/d/e/1FAIpQLSf4KevLfPtzSVifLEQ0Ryjz5ZhpzAvWy2WzgCjtpTOvD4zJ1g/viewform?usp=pp_url&entry.769399060=${await algo.getAddr()}`;
 
+	return `
+	<div class="card" id="opt-in-card">
+	<svg id="proceed-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
+	<p><a href=${url} target="_blank">Click to pay no fees</a></p>
+	</div>`
+}
+
+const getNewCardHTML = async () => {
+	return `
+	<div class="card" id="new-entry-card">
+		<div id="i-container">
+			<i class="far fa-plus-square"></i>
+		</div>
+	</div>
+	`
 }
 
 const getCardModalHTML = (site, uname, psw) => {
@@ -124,19 +130,24 @@ const codeToCanvas = (addr, canvas_id) => {
 }
 
 const updateCards = async () => {
-	let card_holder = $id("card-holder");
+	let card_holder = $id("general-cards");
 	let cards = await algo.getEntries();
 
-	card_holder.innerHTML = cards.length == 0 ? getNoCardHTML() : "";
-	if ($id("no-card-canvas")) codeToCanvas(algo.getAddr(), "no-card-canvas");
+	let holder_content = "";
 
 	cards.forEach(
-		(card, i) => card_holder.innerHTML += getCardHTML(i, card.website, card.user)
+		(card, i) => holder_content += getCardHTML(i, card.website, card.user)
 	);
 
-	Array.from($class("card")).forEach(
+	if (!(await optState() == true)) holder_content += await getOptCardHTML();
+
+	card_holder.innerHTML = holder_content;
+
+	Array.from($class("content-card")).forEach(
 		(card, i) => card.addEventListener("click", () => clickCard(i, cards))
 	);
+
+	if (!(await optState() == true)) $id("proceed-btn").addEventListener("click", async () => {await setCS("opted", true)});
 }
 
 const setCS = async (key, val) => {
@@ -157,10 +168,13 @@ const clearCS = async (key) => {
 	});
 }
 
+const optState = async () => { return await getCS('opted') }
+
 const unlockAlgo = async () => {
 	return new Promise(resolve => {
 		showMpenter();
 		let inp = $id("login-psw");
+
 		$id("submit-mp-btn").addEventListener("click", async () => {
 			try {
 				await algo.getAcc(inp.value);
@@ -171,20 +185,25 @@ const unlockAlgo = async () => {
 			}
 		});
 
-		$id("mp-modal").addEventListener("keyup", event => {
-			if (event.keyCode === 13) $id("submit-mp-btn").click();
+		$id("mp-modal").addEventListener("keydown", event => {
+			if (event.key === "Enter") {
+				event.preventDefault();
+				$id("submit-mp-btn").click();
+			}
 		});
 
 		$id("forgot-psw").addEventListener("click", async () => {
 			await algo.clearMn();
+			await clearCS("opted");
 			location.reload();
 		});
 	});
 }
 
-const main = async () => {
-	if (await algo.getEncMn() == undefined) {
+const lockAlgo = async () => {
+	return new Promise(resolve => {
 		showMpacc();
+
 
 		$id("submit-psw-btn").addEventListener("click", async () => {
 			let recovery;
@@ -196,7 +215,7 @@ const main = async () => {
 				} catch (e) {
 					$id("rec-err-text").style.visibility = "visible";
 					return;
-				}               
+				}
 			}
 
 			let psw = $id("enter-psw");
@@ -205,22 +224,32 @@ const main = async () => {
 			if (psw.value == "" || psw.value != cpsw.value) showMneErr();
 			else {
 				await algo.setAcc(psw.value, recovery);
-				location.reload();
+				await algo.getAcc(psw.value);
+				hideMpacc();
+				resolve();
 			}
 		});
 
-		$id("mne-modal").addEventListener("keyup", event => {
-			if (event.keyCode === 13) $id("submit-psw-btn").click();
+		$id("mne-modal").addEventListener("keydown", event => {
+			if (event.key === "Enter") {
+				event.preventDefault();
+				$id("submit-psw-btn").click();
+			}
 		});
+	});
+}
 
-		return;
+const main = async () => {
+	if (await algo.getEncMn() == undefined) {
+		await lockAlgo();
+	} else {
+		await unlockAlgo();
 	}
 
-	await unlockAlgo();
-	
 	// Top bar + modals
 
-	$id("new-entry-div").addEventListener("click", showNewEntry);
+	$id("new-entry-card").addEventListener("click", showNewEntry);
+
 	$id("new-entry-close-btn").addEventListener("click", hideNewEntry);
 
 	$id("info-icon-div").addEventListener("click", showInfo);
@@ -260,10 +289,8 @@ const main = async () => {
 		copy_mne_btn.innerHTML = "Copied!<br><span style='font-size: 0.7em;'>Paste it somewhere safe</span>";
 	});
 
-	await updateBal();
-
-	Array.from($class("modal-div")).forEach(modal_div => {
-		window.onclick = (event) => {
+	window.onclick = event => {
+		if (event.target.className) {
 			if (event.target.className.split(" ").includes("modal-div")) {
 				hideNewEntry();
 				hideInfo();
@@ -272,7 +299,7 @@ const main = async () => {
 				hideFeedback();
 			}
 		}
-	});
+	}
 
 	// Load cards
 
@@ -286,7 +313,7 @@ const main = async () => {
 		let uname = $id("uname-inp").value;
 		let psw = $id("psw-inp").value;
 
-		if (site != "" && uname != "" && psw != "" && await algo.getBal() != 0) {
+		if (site != "" && uname != "" && psw != "" && (await getCS('opted'))) {
 			await algo.saveEntry(site, uname, psw);
 			let txn_status = $id("txn-status");
 
@@ -300,16 +327,16 @@ const main = async () => {
 		}
 	});
 
-	$id("new-entry-modal").addEventListener("keyup", event => {
-		if (event.keyCode === 13) $id("save-btn").click();
+	$id("new-entry-modal").addEventListener("keydown", event => {
+		if (event.key === "Enter") {
+			event.preventDefault();
+			$id("save-btn").click();
+		}
 	});
 
-	// Update bal and cards every 3 seconds
+	// Update cards every 3 seconds
 
-	let loop = window.setInterval(() => {
-		updateBal();
-		updateCards();
-		}, 3000);
+	window.setInterval(updateCards, 1000);
 }
 
 const algo = new Algo();

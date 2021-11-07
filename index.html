@@ -25,20 +25,6 @@
 	<!-- TOP BAR -->
 
 	<div id="top">
-		<div id="new-entry-div">
-			<button id="new-entry-button">
-				<div id="icon-div">
-					<i class="far fa-plus-square"></i>
-				</div>
-				<div id="text-div">
-					New Entry
-				</div>
-			</button>
-		</div>
-		<div id="balance-div">
-			<svg id="algo-icon" viewBox="0 0 650 650"><g><polygon points="444.18 444.32 406.81 444.32 382.54 354.04 330.36 444.33 288.64 444.33 369.29 304.57 356.31 256.05 247.56 444.36 205.82 444.36 343.64 205.64 380.18 205.64 396.18 264.95 433.88 264.95 408.14 309.71 444.18 444.32"/></g></svg>
-			<span id="algo-balance">0.000</span>
-		</div>
 		<div id="settings-icon-div">
 			<i id="settings-icon-btn" class="fas fa-cog top-icons"></i>
 		</div>
@@ -51,7 +37,10 @@
 
 	<div id="main">
 		<div id="card-holder">
-			<span class="loading-text">Loading entries...</span>
+			<div id="general-cards"></div>
+			<div class="card" id="new-entry-card">
+				<div id="i-container"><i class="far fa-plus-square"></i></div>
+			</div>
 		</div>
 	</div>
 
@@ -107,7 +96,7 @@
 			</div>
 			
 			<button id="save-btn" type="submit" class="modal-func-btn">Save entry</button>
-			<span id="empty-err" class="err-text">Fields cannot be empty and<br>your account must be funded</span>
+			<span id="empty-err" class="err-text">Fields cannot be empty and<br>your account must be opted in</span>
 			<label id="txn-status">Transaction successful!</label>
 
 			<button id="new-entry-close-btn" class="modal-close-btn">Close</button>
@@ -132,17 +121,11 @@
 			<p>Essentially, this means that everything is dependent on your mnemonic passphrase. If you lose your computer, you can still access all of your passwords by installing the AlgoPass extension elsewhere and <em>signing in</em> using the same mnemonic passphrase.</p>
 			</div>
 			<div>
-			<h3>Why do I have to pay?</h3>
-			<p>All of the benefits of using the Algorand blockchain as a password manager come with a tiny fee of 1 milliAlgo per transaction. Since any new entry you create is a transaction on the Algorand blockchain, your Algos simply pay for your transactions.</p>
-			<p>Remember that although there is a small fee, not much money is needed at all: 1 Algo is enough to save 1000 passwords!</p>
-			</div>
-			<div>
 			<h3>What's to come?</h3>
 			<p>We are constantly working to roll out new features to make the AlgoPass experience a more pleasant and secure one. Below is a list of features you should be expecting in upcoming updates:</p>
 			<ul>
 				<li>Auto-saving and auto-filling of passwords when you create new accounts and log into previously visited sites</li>
 				<li>Editing and deleting entries</li>
-				<li>Fee delegation using Algorand smart contracts so that you don't have to fund the transaction fees yourself</li>
 			</ul>
 			<p>Feel free to leave your comments or suggestions in the <a id="feedback-a" href="#">Feedback Menu</a> or directly on <a href="https://github.com/AlgoStation/AlgoPass" target="_blank">our GitHub page</a>.</p>
 			<p>Love,<br>
@@ -177,10 +160,10 @@
 	<div id="expmne-modal-div"  class="modal-div center-modal-div">
 		<div id="expmne-modal" class="modal center-modal">
 			<h3>EXPORT MNEMONIC</h3>
-			<p>Your mnemonic passphrase is used to recover your passwords on another instance of AlgoPass</p>
-			<textarea id="mne-holder" rows="3" readonly></textarea>
+			<p style="margin: 5px;">Your mnemonic passphrase is used to recover your passwords on another instance of AlgoPass</p>
+			<textarea id="mne-holder" rows="2" readonly></textarea>
 			<input id="copy-mne-holder" readonly/>
-			<button id="copy-mne-btn" class="modal-func-btn">Copy it<br><span style='font-size: 0.7em;'>(Not recommended)</span></button>
+			<button id="copy-mne-btn" class="modal-func-btn">Copy it</button>
 			<button id="expmne-close-btn" class="modal-close-btn">Close</button>
 		</div>
 	</div>

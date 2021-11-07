@@ -1,3 +1,7 @@
+a {
+	text-decoration: none;
+}
+
 body {
 	width: 350px;
 	height: 560px;
@@ -51,14 +55,14 @@ button {
 	background-color: transparent;
 }
 
-#new-entry-button {
+/* #new-entry-button {
 	padding: 5px 10px;
 }
 
 #new-entry-button {
 	display: flex;
 	justify-content: space-between;
-}
+} */
 
 #text-div {
 	padding-left: 5px;
@@ -315,7 +319,7 @@ input[type=text], input[type=password] {
 }
 
 #psw-card:not(:hover) {
-	filter: blur(5px);
+	filter: blur(4px);
 }
 
 #txn-status {
@@ -436,4 +440,78 @@ textarea {
 
 #feedback-close-btn {
 	margin: 15px;
+}
+
+#mne-holder:not(:hover) {
+	filter: blur(3px);
+}
+
+
+
+
+#new-entry-card {
+	width: 336px;
+	height: 55px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	border-color: rgba(0, 0, 0, 0.3);
+}
+
+#new-entry-card:hover {
+	border-color: rgba(0, 0, 0, 1);
+}
+
+#i-container {
+	transform: translateY(29px); 
+}
+
+#i-container i {
+	/* z-index: 1; */
+	transform: scale(2);
+	color: rgba(0, 0, 0, 0.3);
+	background-color: white;
+	border: 2px solid white;
+
+	transition: transform;
+	transition-duration: 0.1s;
+}
+
+#new-entry-card:hover i {
+	transform: scale(2.5);
+	color: rgba(0, 0, 0, 1);
+}
+
+#new-entry-card:active i {
+	transform: scale(2);
+	color: rgba(0, 0, 0, 1);
+}
+
+#opt-in-card {
+	font-weight: bold;
+	text-align: center;
+
+	position: relative;
+}
+
+#proceed-btn {
+	position: absolute;
+	top: 5px;
+	right: 6px;
+	
+	cursor: pointer;
+
+	width: 10px;
+
+	fill: rgba(0, 0, 0, 0.4);
+	transition: fill .1s ease;
+}
+
+#proceed-btn:hover {
+	fill: rgba(0, 0, 0, 1);
+}
+
+#asc-msg {
+	cursor: pointer;
 }
