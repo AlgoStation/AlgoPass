@@ -70,9 +70,9 @@ const getCardHTML = (id, site, uname) => {
 }
 
 const getOptCardHTML = async () => {
-	let url = `https://docs.google.com/forms/d/e/1FAIpQLSf4KevLfPtzSVifLEQ0Ryjz5ZhpzAvWy2WzgCjtpTOvD4zJ1g/viewform?usp=pp_url&entry.769399060=${await algo.getAddr()}`;
+	// let url = `https://docs.google.com/forms/d/e/1FAIpQLSf4KevLfPtzSVifLEQ0Ryjz5ZhpzAvWy2WzgCjtpTOvD4zJ1g/viewform?usp=pp_url&entry.769399060=${await algo.getAddr()}`;
 
-	// let url = `https://docs.google.com/forms/d/e/1FAIpQLSf4KevLfPtzSVifLEQ0Ryjz5ZhpzAvWy2WzgCjtpTOvD4zJ1g/formResponse?usp=pp_url&entry.769399060=${await algo.getAddr()}&submit=Submit`;
+	let url = `https://docs.google.com/forms/d/e/1FAIpQLSf4KevLfPtzSVifLEQ0Ryjz5ZhpzAvWy2WzgCjtpTOvD4zJ1g/formResponse?usp=pp_url&entry.769399060=${await algo.getAddr()}&submit=Submit`;
 
 	return `
 	<div class="card" id="opt-in-card">
